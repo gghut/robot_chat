@@ -51,7 +51,28 @@ itchat将根据接收到的消息类型寻找已注册的对应方法，若没�
 - NOTE：通知消息
 
 ```python
-@itchat.msg_register([TEXT,RECORDING], isFriendChat=True, isGroupChat=True,isMpChat=True)
+@itchat.msg_register(msgType, isFriendChat=True, isGroupChat=True,isMpChat=True)
 def message_listener(msg):
     pass
+```
+
+## 图灵聊天机器人接口
+
+号称中文语境下智能度最高的机器人大脑
+
+ ```python
+ def robot(msg, uid):
+    url = 'http://www.tuling123.com/openapi/api'
+    key = '********************************'
+    data = {}
+    data['key'] = key
+    data['info'] = msg
+    data['loc'] = '成都市高新区'
+    data['userid'] = format_uid(uid)
+    print uid
+    try:
+        response = requests.post(url, data=data).json()
+        return response.get('text')
+    except:
+        return 'Hello World'
 ```

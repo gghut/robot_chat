@@ -1,3 +1,4 @@
+# -*- coding: UTF-8 -*-
 import itchat
 import requests
 import hashlib
@@ -18,19 +19,24 @@ def rsponse(msg):
 def robot(msg, uid):
     url = 'http://www.tuling123.com/openapi/api'
     key = '588700afd2ca4a5bbecc7498114917fe'
-    hash = hashlib.md5()
-    uid = hash.update(uid.encode('utf-8'))
     data = {}
     data['key'] = key
     data['info'] = msg
-    data['userid'] = uid
+    data['loc'] = '成都市高新区'
+    data['userid'] = format_uid(uid)
     print uid
     try:
         response = requests.post(url, data=data).json()
-        print response
         return response.get('text')
     except:
         return 'Hello World'
+
+def format_uid(uid):
+    if uid is None:
+        return '00000000000000000000000000000000'
+    else:
+        hash = hashlib.md5()
+        return hash.update(uid.encode('utf-8'))
 
 if __name__ == '__main__':
     main()
