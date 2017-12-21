@@ -1,6 +1,8 @@
 # robot_chat
 使用Python中的itchat和图灵机器人部署聊天机器人
 
+[项目地址](https://itchat.readthedocs.io/zh/latest/)
+
 ## itchat使用
 
 ### 安装
@@ -29,7 +31,27 @@ def logout_success():
 - hotReload = False：默认值为False，登陆之后只能短时间有效，不会长时间保持登陆状态
 
 参数loginCallback为登陆完成后的回调函数，若不设置该参数，登陆完成后将删除二维码图片并清空命令行显示
+
 参数exitCallback为注销完成后的回调函数
 
 ### 注册接收消息
 
+itchat将根据接收到的消息类型寻找已注册的对应方法，若没有找到与之对应的方法，那么该条消息将会被抛弃，消息类型如下：
+
+- TEXT：文本消息
+- MAP：位置分享
+- CARD：名片
+- SHARGING：分享
+- PICTURE：图片
+- RECORDING:语音消息
+- ATTACHMENT:附件
+- VIDEO:小视频
+- FRIENDS：好友请求
+- SYSTEM:系统消息
+- NOTE：通知消息
+
+```python
+@itchat.msg_register([TEXT,RECORDING], isFriendChat=True, isGroupChat=True,isMpChat=True)
+def message_listener(msg):
+    pass
+```
