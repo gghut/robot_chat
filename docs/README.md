@@ -1,7 +1,9 @@
 # robot_chat
 使用Python中的itchat和图灵机器人部署微信聊天机器人
 
-[项目地址](https://itchat.readthedocs.io/zh/latest/)
+[ITChat](https://itchat.readthedocs.io/zh/latest/)
+
+[WXBot](https://github.com/liuwons/wxBot)
 
 ## itchat使用
 
