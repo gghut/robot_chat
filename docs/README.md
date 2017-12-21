@@ -1,5 +1,5 @@
 # robot_chat
-使用Python中的itchat和图灵机器人部署聊天机器人
+使用Python中的itchat和图灵机器人部署微信聊天机器人
 
 [项目地址](https://itchat.readthedocs.io/zh/latest/)
 
@@ -53,7 +53,25 @@ itchat将根据接收到的消息类型寻找已注册的对应方法，若没�
 ```python
 @itchat.msg_register(msgType, isFriendChat=True, isGroupChat=True,isMpChat=True)
 def message_listener(msg):
-    pass
+    flag = msg.isAt
+    message = msg['Text']
+    uid = message['FromUserName']
+```
+
+## 发送消息
+
+```python
+send(msg="Text Message", toUserName=None)
+```
+
+- msg：文本消息内容，@fil@path发送文件，@img@path发送图片，@vid@path发送视频
+- toUserName：消息发送对象，None为发送给自己
+
+```python
+itchat.send_msg("hello world.")
+itchat.send_file("/tmp/test.txt")
+itchat.send_img("/tmp/test.txt")
+itchat.send_video("/tmp/test.txt")
 ```
 
 ## 图灵聊天机器人接口
@@ -76,3 +94,7 @@ def message_listener(msg):
     except:
         return 'Hello World'
 ```
+
+## QQ Python机器人
+
+[QQBot](https://github.com/pandolia/qqbot/)

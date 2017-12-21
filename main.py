@@ -9,7 +9,7 @@ def main():
     itchat.run()
     pass
 
-@itchat.msg_register(['Text', 'Map', 'Card', 'Note', 'Sharing'])
+@itchat.msg_register('Text',isFriendChat=True,isGroupChat=True)
 def rsponse(msg):
     print msg
     r = robot(msg['Content'],msg['FromUserName'])
