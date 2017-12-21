@@ -5,7 +5,7 @@ import hashlib
 
 def main():
     itchat.auto_login(hotReload=True)
-    itchat.send_msg(msg='Test Message')
+    itchat.send_msg(msg='robot started ...')
     itchat.run()
     pass
 

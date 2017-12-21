@@ -16,7 +16,7 @@ sudo pip install itchat
 ### 登陆
 
 ```python
-itchat.auto_login(hotReload=True，loginCallback=login_success, exitCallback=logout_success)
+itchat.auto_login(hotReload=True,loginCallback=login_success, exitCallback=logout_success)
 
 def login_success():
     print 'login success'
